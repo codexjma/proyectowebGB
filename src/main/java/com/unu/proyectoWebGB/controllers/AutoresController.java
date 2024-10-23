@@ -41,7 +41,8 @@ public class AutoresController extends HttpServlet {
 			break;
 
 		case "nuevo":
-			// nuevo()
+			// nuevo
+			request.getRequestDispatcher("/autores/nuevoAutor.jsp").forward(request, response);
 			break;
 
 		}
