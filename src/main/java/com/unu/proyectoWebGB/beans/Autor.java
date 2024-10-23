@@ -2,23 +2,16 @@ package com.unu.proyectoWebGB.beans;
 
 public class Autor {
 
-	//--CONSTRUCTOR CON TODOS LOS CAMPOS--//
-	public Autor(int idAutor, String nacionalidad, String nombre) {
+	public Autor(int idAutor, String nombre, String nacionalidad) {
 		super();
 		this.idAutor = idAutor;
 		this.nacionalidad = nacionalidad;
 		this.nombre = nombre;
 	}
-	//------------------------------
-	
-	
-	//--CONSTRUCTOR VACÍO--//
+
 	public Autor() {
-
 		this(0, "", "");
-
 	}
-	//------------------------
 
 	private int idAutor;
 	private String nacionalidad;
