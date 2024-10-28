@@ -50,6 +50,9 @@ public class AutoresController extends HttpServlet {
 			obtener(request, response);
 			break;
 
+		case "modificar":
+			modificar(request, response);
+			break;
 		}
 	}
 
@@ -112,6 +115,43 @@ public class AutoresController extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	
+	
+	
+private void modificar(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+		
+		try{
+			
+			Autor miAutor =  new Autor();
+			miAutor.setIdAutor(Integer.parseInt(request.getParameter("idautor")));;
+			miAutor.setNombre(request.getParameter("nombre"));
+			miAutor.setNacionalidad(request.getParameter("nacionalidad"));
+			request.setAttribute("autor", miAutor);
+			
+			if(modelo.modificarAutor(miAutor)>0) {
+				request.getSession().setAttribute("exito",
+						"autor modificado correctamente");							
+			}
+			else {
+				request.getSession().setAttribute("fracaso",
+						"El autor no ha sido modificaro");				
+			}
+			
+			response.sendRedirect(request.getContextPath() + "/AutoresController?op=listar");	
+						
+		}catch (Exception ex) {
+			// 
+			ex.getStackTrace();
+		}
+		
+	}
+	
+	
+
+	
+	
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)

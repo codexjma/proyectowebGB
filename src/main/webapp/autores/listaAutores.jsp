@@ -11,12 +11,12 @@
 <body>
 
 	<%
-	String url = "http://localhost:8092/proyectoWebGB/";
+	String url = "http://localhost:8080/proyectoWebGB/";
 	%>
 	<a type="button" href="<%=url%>AutoresController?op=nuevo">Nuevo
 		autor</a>
 
-	<table border="1">
+	<table border="1" id="tabla">
 		<thead>
 
 			<th>Cod Autor</th>
@@ -40,6 +40,9 @@
 				<td><%=autor.getNacionalidad()%></td>
 				<td><a
 					href="<%=url%>AutoresController?op=obtener&id=<%=autor.getIdAutor()%>">Modificar</a>
+				<a href="<%=url%>AutoresController?op=eliminar&id=<%=autor.getIdAutor()%>">Eliminar</a>
+				
+				
 				</td>
 			</tr>
 
@@ -54,6 +57,7 @@
 				<td>No hay datos</td>
 				<td>No hay datos</td>
 				<td>No hay datos</td>
+				</td></td>
 			</tr>
 			<%
 			}
@@ -62,7 +66,6 @@
 
 
 	</table>
-
 
 
 </body>

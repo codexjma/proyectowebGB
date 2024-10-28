@@ -10,12 +10,15 @@
 <body>
 
 	<%
-	String url = "http://localhost:8092/proyectoWebGB/";
+	String url = "http://localhost:8080/proyectoWebGB/";
 	Autor autor;
 	if (request.getAttribute("autor") == null)
 		autor = new Autor();
 	else{
 		autor = (Autor)request.getAttribute("autor");
+		System.out.println(autor.getIdAutor());
+		System.out.println(autor.getNombre());
+
 	}	
 	%>
 

@@ -72,6 +72,7 @@ public class AutoresModel extends Conexion {
 			this.abrirConexion();
 			cs = conexion.prepareCall(sql);
 			cs.setInt(1, idautor);
+			rs=cs.executeQuery();
 			if (rs.next()) {
 				autor.setIdAutor(rs.getInt("idautor"));
 				autor.setNombre(rs.getString("nombre"));
@@ -80,6 +81,8 @@ public class AutoresModel extends Conexion {
 			}
 
 		} catch (Exception e) {
+			
+			e.printStackTrace();
 			this.cerrarConexion();
 			return null;
 		}

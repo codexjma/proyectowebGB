@@ -9,7 +9,7 @@
 <body>
 
 	<%
-	String url = "http://localhost:8092/proyectoWebGB/";
+	String url = "http://localhost:8080/proyectoWebGB/";
 	%>
 
 	<h3>Nuevo Autor</h3>
