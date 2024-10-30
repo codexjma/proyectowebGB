@@ -102,6 +102,7 @@ public class AutoresModel extends Conexion {
 			this.cerrarConexion();
 			return filasAfectadas;
 		} catch (Exception e) {
+			e.getStackTrace();
 			this.cerrarConexion();
 			return 0;
 		}
@@ -109,4 +110,22 @@ public class AutoresModel extends Conexion {
 	}
 	
 
+	public int EliminarAutor(int idautor) throws SQLException {
+		try {
+			int filasAfectadas = 0;
+			String sql = "CALL sp_eliminarAutor(?)";
+			this.abrirConexion();
+			cs = conexion.prepareCall(sql);
+			cs.setInt(1, idautor);
+			filasAfectadas = cs.executeUpdate();
+			this.cerrarConexion();
+			return filasAfectadas;
+		} catch (Exception e) {
+			this.cerrarConexion();
+			return 0;
+		}
+
+	}
+	
+	
 }

@@ -53,6 +53,10 @@ public class AutoresController extends HttpServlet {
 		case "modificar":
 			modificar(request, response);
 			break;
+			
+		case "eliminar":
+			eliminar(request, response);
+			break;
 		}
 	}
 
@@ -125,7 +129,7 @@ private void modificar(HttpServletRequest request, HttpServletResponse response)
 		try{
 			
 			Autor miAutor =  new Autor();
-			miAutor.setIdAutor(Integer.parseInt(request.getParameter("idautor")));;
+			miAutor.setIdAutor(Integer.parseInt(request.getParameter("id")));;
 			miAutor.setNombre(request.getParameter("nombre"));
 			miAutor.setNacionalidad(request.getParameter("nacionalidad"));
 			request.setAttribute("autor", miAutor);
@@ -149,6 +153,31 @@ private void modificar(HttpServletRequest request, HttpServletResponse response)
 	}
 	
 	
+
+
+private void eliminar(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+	
+	try{
+		
+		 int idautor = Integer.parseInt(request.getParameter("id"));
+		 
+		 if(modelo.EliminarAutor(idautor)>0) {
+			 request.getSession().setAttribute("Èxito","Autor eliminado exitosamente");
+		}
+		else {
+			request.getSession().setAttribute("fracaso",
+					"autor no eliminado");				
+		}
+		
+		response.sendRedirect(request.getContextPath()
+				+"/AutoresController?op=listar");	
+					
+	}catch (Exception ex) {
+		// 
+		ex.getStackTrace();
+	}
+	
+}
 
 	
 	
