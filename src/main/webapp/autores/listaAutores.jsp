@@ -5,6 +5,20 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+<script>
+	function eliminar(id){
+		
+		if(confirm("¿Desea eliminar eliminar el registro?") == true){
+			location.href = "AutoresController?op=eliminar&id=" + id;
+			
+		} else{
+			
+		}
+		
+	}
+
+</script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -13,10 +27,10 @@
 	<%
 	String url = "http://localhost:8080/proyectoWebGB/";
 	%>
-	<a type="button" href="<%=url%>AutoresController?op=nuevo">Nuevo
-		autor</a>
+	<div class="container">
+	<a href="<%=url%>AutoresController?op=nuevo"><button type="button" class="btn btn-success">Nuevo Autor</button></a>
 
-	<table border="1" id="tabla">
+	<table class="table table-hover">
 		<thead>
 
 			<th>Cod Autor</th>
@@ -38,9 +52,15 @@
 				<td><%=autor.getIdAutor()%></td>
 				<td><%=autor.getNombre()%></td>
 				<td><%=autor.getNacionalidad()%></td>
-				<td><a
-					href="<%=url%>AutoresController?op=obtener&id=<%=autor.getIdAutor()%>">Modificar</a>
-				<a href="<%=url%>AutoresController?op=eliminar&id=<%=autor.getIdAutor()%>">Eliminar</a>
+				<td>
+					
+				<a
+				href="<%=url%>AutoresController?op=obtener&id=<%=autor.getIdAutor()%>"><button type="button" class="btn btn-warning">Modificar</button></a>
+				<!-- <a href="<%=url%>AutoresController?op=eliminar&id=<%=autor.getIdAutor()%>"><button type="button" class="btn btn-danger">Eliminar</button></a> -->	
+				
+				 <!--  -->
+				 
+				 <a href="javascript:eliminar('<%=autor.getIdAutor()%>')" class="btn btn-danger">Eliminar</a>
 				
 				
 				</td>
@@ -66,7 +86,7 @@
 
 
 	</table>
-
+</div>
 
 </body>
 </html>
