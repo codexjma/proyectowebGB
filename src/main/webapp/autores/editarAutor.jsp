@@ -16,7 +16,7 @@
 <body>
 
 
-
+<%@include file="/cabeceraMenu.jsp" %>
 	<%
 	String url = "http://localhost:8080/proyectoWebGB/";
 	Autor autor;

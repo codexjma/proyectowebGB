@@ -5,8 +5,32 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+	function validarFormulario(){
+		
+		const nombre = document.getElementById('nombre').value.trim();
+		const nacionalidad = document.getElementById('nacionalidad').value.trim();
+		
+		if(nombre === ""){
+			alert('Ingrese el nombre del autor');
+			return false;			
+			
+		}
+		
+		return true;
+		
+	}
+
+
+
+</script>
+
+
+
+
 </head>
 <body>
+<%@include file="/cabeceraMenu.jsp" %>
 
 	<%
 	String url = "http://localhost:8080/proyectoWebGB/";

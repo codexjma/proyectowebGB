@@ -23,12 +23,13 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%@include file="/cabeceraMenu.jsp" %>
 
 	<%
 	String url = "http://localhost:8080/proyectoWebGB/";
 	%>
 	<div class="container">
-	<a href="<%=url%>AutoresController?op=nuevo"><button type="button" class="btn btn-success">Nuevo Autor</button></a>
+	<a href="<%=url%>AutoresController?op=nuevo"><button type="button" class="btn btn-success mt-4 mb-4">Nuevo Autor</button></a>
 
 	<table class="table table-hover">
 		<thead>

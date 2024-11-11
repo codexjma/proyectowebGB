@@ -7,7 +7,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import com.unu.proyectoWebGB.beans.Autor;
 import com.unu.proyectoWebGB.models.AutoresModel;
@@ -78,6 +80,7 @@ public class AutoresController extends HttpServlet {
 		
 		try{
 			
+			if(!validar(request, response)){
 			Autor miAutor =  new Autor();
 			miAutor.setNombre(request.getParameter("nombre"));
 			miAutor.setNacionalidad(request.getParameter("nacionalidad"));
@@ -99,6 +102,8 @@ public class AutoresController extends HttpServlet {
 		}
 		
 	}
+	}
+	
 	
 	private void obtener(HttpServletRequest request, HttpServletResponse response) {
 		try {
@@ -199,6 +204,35 @@ private void eliminar(HttpServletRequest request, HttpServletResponse response)t
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		processRequest(request, response);
+	}
+	
+	
+	
+	private boolean validar(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+		boolean res=false;
+		List<String> listError = new ArrayList<>();
+		
+		try {
+			if(request.getParameter("nombre").equals("")) {
+				res=true;
+				listError.add("Ingrese el nombre del autor");
+				
+			}
+			if(request.getParameter("Nacionalidad").equals("")) {
+				res=true;
+				listError.add("Ingrese la nacionalidad del Autor");
+				
+			}
+			
+		}catch(Exception e){
+			e.getStackTrace();
+				
+			
+		}
+		return res;
+		
 	}
 
 }
